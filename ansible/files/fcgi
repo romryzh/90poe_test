@@ -1,0 +1,37 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          fcgi
+# Required-Start:    $local_fs $network $named $time $syslog
+# Required-Stop:     $local_fs $network $named $time $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Description:       fcgi runner
+### END INIT INFO
+
+pid=`pgrep -f "index.py"`
+
+case  "$1" in
+
+start)
+
+spawn-fcgi -d /var/www/test/hello-app/dynamic -f /var/www/test/hello-app/dynamic/index.py -a 127.0.0.1 -p 9002
+;;
+
+stop)
+
+kill "${pid}"
+;;
+
+restart)
+
+kill "${pid}"
+sleep 5
+spawn-fcgi -d /var/www/test/hello-app/dynamic -f /var/www/test/hello-app/dynamic/index.py -a 127.0.0.1 -p 9002
+;;
+
+*)
+
+echo "Usage: $0 {start|stop|restart}"
+;;
+esac
+
