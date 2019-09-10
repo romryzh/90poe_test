@@ -1,10 +1,18 @@
-# Tasks:
+# Evaluation points
+* Correctness of implementation in scripts.
+* Bash scripts best practices.
+* Python code best practices.
+* Use of git, appropriate commit messages.
+* Documentation: README and inline code comments.
+# Technical test:
 Implement deployment of 3 tier application, which would run on Ubuntu server 18.04 LTS, would use Nginx, Postgres and Python code in consitent and repeatable way. You would need to automate deployment of:
 1. Setup use of 10.0.0.2/18 static IP address, Netmask 255.255.192.0, gateway 10.0.0.1/18.
 2. Install Nginx, configure it to serve static pages and dynamic pages via FCGI (python application).
 3. Install PostgreSQL DBMS and create DB, user for DB, set users password.
 4. Install simple Python application which would serve "Hello World!" via FCGI.
 5. Make sure all your changes are persistent after reboot.
+# Bonus points
+* Use Ansible for server setup.
 
 ## Network configuration on the target machine:
 ```
@@ -33,18 +41,18 @@ $ ansible --version
 ansible 2.0.0.2
 ```
 
-1. Clone git repository:
+#### 1. Clone git repository:
 ```
 git clone https://github.com/romryzh/test.git
 ```
-2. Generate SSH key-pair and copy public key to the target machine:
+#### 2. Generate SSH key-pair and copy public key to the target machine:
 ```
 ssh-keygen -f ~/.ssh/ansible
 ssh -i ~/.ssh/ansible.pub <username>@10.0.0.2
 ```
 
-3. Replace `ansible_user` parameter in `hosts` inventory file with name of the user on the target machine.
-4. Run playbook:
+#### 3. Replace `ansible_user` parameter in `hosts` inventory file with name of the user on the target machine.
+#### 4. Run playbook:
 ```
 rry@ansible:~/test/ansible$ ansible-playbook test_deploy.yaml --ask-sudo-pass -i hosts
 SUDO password: 
@@ -115,8 +123,38 @@ changed: [host1]
 PLAY RECAP *********************************************************************
 host1                      : ok=18   changed=4    unreachable=0    failed=0   
 ```
-5. Open pages in browser:
+#### 5. Open pages in browser:
 
 ![1](https://raw.githubusercontent.com/romryzh/test/pictures/pictures/img1.png)
 ![2](https://raw.githubusercontent.com/romryzh/test/pictures/pictures/img2.png)
 ![3](https://raw.githubusercontent.com/romryzh/test/pictures/pictures/img3.png)
+
+#### 6. Check PostgreSQL:
+```
+rry@test:~$ psql -h 127.0.0.1 -p 5432 -U testuser -W testdb
+Password for user testuser:
+psql (10.10 (Ubuntu 10.10-0ubuntu0.18.04.1))
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+Type "help" for help.
+
+testdb=>
+testdb=> \l
+                                  List of databases
+   Name    |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges
+-----------+----------+----------+-------------+-------------+-----------------------
+ postgres  | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+ template0 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+           |          |          |             |             | postgres=CTc/postgres
+ template1 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+           |          |          |             |             | postgres=CTc/postgres
+ testdb    | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | postgres=CTc/postgres+
+           |          |          |             |             | testuser=CTc/postgres
+(4 rows)
+testdb=> \du
+                                   List of roles
+ Role name |                         Attributes                         | Member of
+-----------+------------------------------------------------------------+-----------
+ postgres  | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ testuser  |                                                            | {}
+
+```
