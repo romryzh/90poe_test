@@ -10,4 +10,7 @@
 
 [test]
 host1 ansible_host=10.0.0.2 ansible_user=rry ansible_ssh_private_key_file=~/.ssh/ansible
+<<<<<<< HEAD
 host2 ansible_host=172.18.16.11 ansible_user=rry ansible_ssh_private_key_file=~/.ssh/ansible
+=======
+>>>>>>> 28fe01871d752eeb54d70aad46c62022f925cd30
