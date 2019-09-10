@@ -8,12 +8,12 @@ app = web.application(urls, globals())
 
 class hello:
 	def GET(self):
-		return '<html>
+		return """<html>
 <header><title>Dynamic page</title></header>
 <body>
 Hello World from dynamic page!
 </body>
-</html>'
+</html>"""
 
 if __name__ == "__main__":
 	web.wsgi.runwsgi = lambda func, addr=None: web.wsgi.runfcgi(func, addr)
