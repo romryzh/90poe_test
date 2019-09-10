@@ -77,7 +77,7 @@
 
     - name: Clone git repo
       git:
-        repo: 'https://github.com/romryzh/test.git'
+        repo: 'https://github.com/romryzh/90poe_test.git'
         dest: /var/www/test
         version: master
         force: yes
