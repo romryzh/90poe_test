@@ -19,7 +19,7 @@ spawn-fcgi -d /var/www/test/hello-app/dynamic -f /var/www/test/hello-app/dynamic
 
 stop)
 
-kill "${pid}"
+kill "${pid}" 2>/dev/null
 ;;
 
 restart)
