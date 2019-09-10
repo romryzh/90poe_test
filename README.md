@@ -33,18 +33,18 @@ $ ansible --version
 ansible 2.0.0.2
 ```
 
-1. Clone git repository:
+#### 1. Clone git repository:
 ```
 git clone https://github.com/romryzh/test.git
 ```
-2. Generate SSH key-pair and copy public key to the target machine:
+#### 2. Generate SSH key-pair and copy public key to the target machine:
 ```
 ssh-keygen -f ~/.ssh/ansible
 ssh -i ~/.ssh/ansible.pub <username>@10.0.0.2
 ```
 
-3. Replace `ansible_user` parameter in `hosts` inventory file with name of the user on the target machine.
-4. Run playbook:
+#### 3. Replace `ansible_user` parameter in `hosts` inventory file with name of the user on the target machine.
+#### 4. Run playbook:
 ```
 rry@ansible:~/test/ansible$ ansible-playbook test_deploy.yaml --ask-sudo-pass -i hosts
 SUDO password: 
@@ -115,13 +115,13 @@ changed: [host1]
 PLAY RECAP *********************************************************************
 host1                      : ok=18   changed=4    unreachable=0    failed=0   
 ```
-5. Open pages in browser:
+#### 5. Open pages in browser:
 
 ![1](https://raw.githubusercontent.com/romryzh/test/pictures/pictures/img1.png)
 ![2](https://raw.githubusercontent.com/romryzh/test/pictures/pictures/img2.png)
 ![3](https://raw.githubusercontent.com/romryzh/test/pictures/pictures/img3.png)
 
-6. Check PostgreSQL:
+#### 6. Check PostgreSQL:
 ```
 rry@test:~$ psql -h 127.0.0.1 -p 5432 -U testuser -W testdb
 Password for user testuser:
