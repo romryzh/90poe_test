@@ -1,5 +1,5 @@
 # Evaluation points
-• Correctness of implementation in scripts.
+* Correctness of implementation in scripts.
 • Bash scripts best practices.
 • Python code best practices.
 • Use of git, appropriate commit messages.
