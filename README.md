@@ -185,7 +185,12 @@ Hello World from static page!
 </body>
 </html>
 rry@ansible:~/test/ansible$ curl http://10.0.0.2/dynamic
+<html>
+<header><title>Dynamic page</title></header>
+<body>
 Hello World from dynamic page!
+</body>
+</html>
 ```
 
 ![1](https://raw.githubusercontent.com/romryzh/test/pictures/pictures/img1.png)
