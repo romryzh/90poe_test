@@ -1,9 +1,9 @@
 # Evaluation points
-•    correctness of implementation in scripts
-•    Bash scripts best practices
-•    Python code best practices
-•    use of git, appropriate commit messages
-•    documentation: README and inline code comments
+• Correctness of implementation in scripts.
+• Bash scripts best practices.
+• Python code best practices.
+• Use of git, appropriate commit messages.
+• Documentation: README and inline code comments.
 # Technical test:
 Implement deployment of 3 tier application, which would run on Ubuntu server 18.04 LTS, would use Nginx, Postgres and Python code in consitent and repeatable way. You would need to automate deployment of:
 1. Setup use of 10.0.0.2/18 static IP address, Netmask 255.255.192.0, gateway 10.0.0.1/18.
@@ -12,7 +12,7 @@ Implement deployment of 3 tier application, which would run on Ubuntu server 18.
 4. Install simple Python application which would serve "Hello World!" via FCGI.
 5. Make sure all your changes are persistent after reboot.
 # Bonus points
-•    Use Ansible for server setup.
+• Use Ansible for server setup.
 
 ## Network configuration on the target machine:
 ```
