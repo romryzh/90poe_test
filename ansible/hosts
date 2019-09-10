@@ -10,4 +10,4 @@
 
 [test]
 host1 ansible_host=10.0.0.2 ansible_user=rry ansible_ssh_private_key_file=~/.ssh/ansible
-
+host1 ansible_host=10.0.0.4 ansible_user=rry ansible_ssh_private_key_file=~/.ssh/ansible

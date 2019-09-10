@@ -24,7 +24,7 @@ kill "${pid}"
 
 restart)
 
-kill "${pid}"
+kill "${pid}" 2>/dev/null
 sleep 5
 spawn-fcgi -d /var/www/test/hello-app/dynamic -f /var/www/test/hello-app/dynamic/index.py -a 127.0.0.1 -p 9002
 ;;
