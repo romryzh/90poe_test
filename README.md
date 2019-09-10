@@ -120,3 +120,33 @@ host1                      : ok=18   changed=4    unreachable=0    failed=0
 ![1](https://raw.githubusercontent.com/romryzh/test/pictures/pictures/img1.png)
 ![2](https://raw.githubusercontent.com/romryzh/test/pictures/pictures/img2.png)
 ![3](https://raw.githubusercontent.com/romryzh/test/pictures/pictures/img3.png)
+
+6. Check PostgreSQL:
+```
+rry@test:~$ psql -h 127.0.0.1 -p 5432 -U testuser -W testdb
+Password for user testuser:
+psql (10.10 (Ubuntu 10.10-0ubuntu0.18.04.1))
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+Type "help" for help.
+
+testdb=>
+testdb=> \l
+                                  List of databases
+   Name    |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges
+-----------+----------+----------+-------------+-------------+-----------------------
+ postgres  | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+ template0 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+           |          |          |             |             | postgres=CTc/postgres
+ template1 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+           |          |          |             |             | postgres=CTc/postgres
+ testdb    | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | postgres=CTc/postgres+
+           |          |          |             |             | testuser=CTc/postgres
+(4 rows)
+testdb=> \du
+                                   List of roles
+ Role name |                         Attributes                         | Member of
+-----------+------------------------------------------------------------+-----------
+ postgres  | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ testuser  |                                                            | {}
+
+```
