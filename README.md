@@ -123,13 +123,7 @@ changed: [host1]
 PLAY RECAP *********************************************************************
 host1                      : ok=18   changed=4    unreachable=0    failed=0   
 ```
-#### 5. Open pages in browser:
-
-![1](https://raw.githubusercontent.com/romryzh/test/pictures/pictures/img1.png)
-![2](https://raw.githubusercontent.com/romryzh/test/pictures/pictures/img2.png)
-![3](https://raw.githubusercontent.com/romryzh/test/pictures/pictures/img3.png)
-
-#### 6. Check PostgreSQL:
+#### 5. Check PostgreSQL:
 ```
 rry@test:~$ psql -h 127.0.0.1 -p 5432 -U testuser -W testdb
 Password for user testuser:
@@ -158,3 +152,42 @@ testdb=> \du
  testuser  |                                                            | {}
 
 ```
+#### 7. Check hello-app:
+
+```
+rry@ansible:~/test/ansible$ curl http://10.0.0.2
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome!</h1>
+<p>Path to dynamic page: <a href="dynamic">/dynamic</a></p>
+<p>Path to static page: <a href="static">/static</a> </p>
+
+<p><em>Have a good day!</em></p>
+</body>
+</html>
+
+rry@ansible:~/test/ansible$ curl http://10.0.0.2/static/
+<html>
+<header><title>This is title</title></header>
+<body>
+Hello World from static page!
+</body>
+</html>
+rry@ansible:~/test/ansible$ curl http://10.0.0.2/dynamic
+Hello World from dynamic page!
+```
+
+![1](https://raw.githubusercontent.com/romryzh/test/pictures/pictures/img1.png)
+![2](https://raw.githubusercontent.com/romryzh/test/pictures/pictures/img2.png)
+![3](https://raw.githubusercontent.com/romryzh/test/pictures/pictures/img3.png)
