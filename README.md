@@ -176,7 +176,7 @@ rry@ansible:~/90poe_test/ansible$ curl http://10.0.0.2/static/
 Hello World from static page!
 </body>
 </html>
-rry@ansible:~/test/ansible$ curl http://10.0.0.2/dynamic
+rry@ansible:~/90poe_test/ansible$ curl http://10.0.0.2/dynamic
 <html>
 <header><title>Dynamic page</title></header>
 <body>
