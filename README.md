@@ -43,18 +43,18 @@ ansible 2.0.0.2
 
 #### 1. Clone git repository:
 ```
-git clone https://github.com/romryzh/test.git
+git clone https://github.com/romryzh/90poe_test.git
 ```
 #### 2. Generate SSH key-pair and copy public key to the target machine:
 ```
 ssh-keygen -f ~/.ssh/ansible
-ssh -i ~/.ssh/ansible.pub <username>@10.0.0.2
+ssh-copy-id -i ~/.ssh/ansible.pub <username>@10.0.0.2
 ```
 
 #### 3. Replace `ansible_user` parameter in `hosts` inventory file with name of the user on the target machine.
-#### 4. Run playbook:
+#### 4. Run playbook (For Ansible versions above 2.6 use next command to run playbook: `ansible-playbook test_deploy.yml -K -i hosts`) :
 ```
-rry@ansible:~/test/ansible$ ansible-playbook test_deploy.yaml --ask-sudo-pass -i hosts
+rry@ansible:~/test/ansible$ ansible-playbook test_deploy.yml --ask-sudo-pass -i hosts
 SUDO password: 
 
 PLAY ***************************************************************************
@@ -192,7 +192,6 @@ Hello World from dynamic page!
 </body>
 </html>
 ```
-
 ![1](https://raw.githubusercontent.com/romryzh/test/pictures/pictures/img1.png)
 ![2](https://raw.githubusercontent.com/romryzh/test/pictures/pictures/img2.png)
 ![3](https://raw.githubusercontent.com/romryzh/test/pictures/pictures/img3.png)
