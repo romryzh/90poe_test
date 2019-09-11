@@ -48,7 +48,7 @@ git clone https://github.com/romryzh/90poe_test.git
 #### 2. Generate SSH key-pair and copy public key to the target machine:
 ```
 ssh-keygen -f ~/.ssh/ansible
-ssh -i ~/.ssh/ansible.pub <username>@10.0.0.2
+ssh-copy-id -i ~/.ssh/ansible.pub <username>@10.0.0.2
 ```
 
 #### 3. Replace `ansible_user` parameter in `hosts` inventory file with name of the user on the target machine.
