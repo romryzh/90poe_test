@@ -115,7 +115,7 @@ PLAY RECAP *********************************************************************
 host1                      : ok=15   changed=5    unreachable=0    failed=0
 
 ```
-#### If user wich uses Ansible on the target machine don't have a password you can skip `--ask-sudo-pass/-K` key
+#### If user which is used by Ansible on the target machine don't have a password you can skip `--ask-sudo-pass/-K` key
 
 #### 5. Check PostgreSQL:
 ```
