@@ -52,7 +52,7 @@ ssh-copy-id -i ~/.ssh/ansible.pub <username>@10.0.0.2
 ```
 
 #### 3. Replace `ansible_user` parameter in `hosts` inventory file with name of the user on the target machine.
-#### 4. Run playbook:
+#### 4. Run playbook(For Ansible versions above 2.6 use next command to run the playbook): `ansible-playbook test_deploy.yml -K -i hosts`) :
 ```
 rry@ansible:~/test/ansible$ ansible-playbook test_deploy.yml --ask-sudo-pass -i hosts
 SUDO password: 
