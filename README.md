@@ -43,7 +43,7 @@ ansible 2.0.0.2
 
 #### 1. Clone git repository:
 ```
-git clone https://github.com/romryzh/test.git
+git clone https://github.com/romryzh/90poe_test.git
 ```
 #### 2. Generate SSH key-pair and copy public key to the target machine:
 ```
