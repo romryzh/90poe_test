@@ -54,8 +54,8 @@ ssh-copy-id -i ~/.ssh/ansible.pub <username>@10.0.0.2
 #### 3. Replace `ansible_user` parameter in `hosts` inventory file with name of the user on the target machine.
 #### 4. Run playbook (For Ansible versions above 2.6 use next command to run playbook: `ansible-playbook test_deploy.yml -K -i hosts`) :
 ```
-rry@ansible:~/test/ansible$ ansible-playbook test_deploy.yml --ask-sudo-pass -i hosts
-SUDO password: 
+rry@ansible:~/90poe_test/ansible$ ansible-playbook test_deploy.yml --ask-sudo-pass -i hosts
+SUDO password:
 
 PLAY ***************************************************************************
 
@@ -82,24 +82,15 @@ ok: [host1]
 TASK [Ensure user has access to database] **************************************
 ok: [host1]
 
-TASK [Ensure user does not have unnecessary privilege] *************************
-ok: [host1]
-
-TASK [Ensure no other user can access the database] ****************************
-ok: [host1]
-
 PLAY ***************************************************************************
 
 TASK [Copy the nginx config file] **********************************************
-ok: [host1]
+changed: [host1]
 
 TASK [Create symlink] **********************************************************
 ok: [host1]
 
 TASK [Copy default html page] **************************************************
-ok: [host1]
-
-TASK [Create /var/www/hello-app dir] *******************************************
 ok: [host1]
 
 TASK [Clone git repo] **********************************************************
@@ -121,7 +112,8 @@ TASK [Restart nginx] ***********************************************************
 changed: [host1]
 
 PLAY RECAP *********************************************************************
-host1                      : ok=18   changed=4    unreachable=0    failed=0   
+host1                      : ok=15   changed=5    unreachable=0    failed=0
+
 ```
 #### 5. Check PostgreSQL:
 ```
