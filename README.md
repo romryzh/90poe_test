@@ -147,7 +147,7 @@ testdb=> \du
 #### 7. Check hello-app:
 
 ```
-rry@ansible:~/test/ansible$ curl http://10.0.0.2
+rry@ansible:~/90poe_test/ansible$ curl http://10.0.0.2
 <!DOCTYPE html>
 <html>
 <head>
@@ -169,7 +169,7 @@ rry@ansible:~/test/ansible$ curl http://10.0.0.2
 </body>
 </html>
 
-rry@ansible:~/test/ansible$ curl http://10.0.0.2/static/
+rry@ansible:~/90poe_test/ansible$ curl http://10.0.0.2/static/
 <html>
 <header><title>This is title</title></header>
 <body>
