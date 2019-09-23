@@ -12,15 +12,10 @@ print token
 
 mydb = mysql.connector.connect(
     host = "test-database.c1eo8ftt0y1z.us-east-1.rds.amazonaws.com",
-<<<<<<< HEAD
-    user = 'test',
     password = token,
     ssl_ca = 'rds-combined-ca-bundle.pem',
-    auth_plugin = 'mysql_clear_password'
-=======
-    user = 'ec2',
-    password = token
->>>>>>> 6a100fc57689bf4ff484caa46278c87de609f911
+    auth_plugin = 'mysql_clear_password',
+    user = 'ec2'
 )
 
 urls = ("/dynamic", "hello")
