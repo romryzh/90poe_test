@@ -2,9 +2,14 @@
 # -*- coding: utf-8 -*-
 
 import web
+import mysql.connector
 
 urls = ("/dynamic", "hello")
 app = web.application(urls, globals())
+
+mydb = mysql.connector.connect(
+    host = "test-database.c1eo8ftt0y1z.us-east-1.rds.amazonaws.com"
+)
 
 class hello:
 	def GET(self):

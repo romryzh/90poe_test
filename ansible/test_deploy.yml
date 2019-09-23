@@ -27,7 +27,7 @@
         - python-psycopg2
 
   - name: Install web.py
-    pip: name-{{item}}
+    pip: name={{item}}
     with_items:
         - web.py
         - mysql-connector
