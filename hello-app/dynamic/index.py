@@ -8,11 +8,12 @@ import boto3
 client = boto3.client('rds',region_name='us-east-1')
 token = client.generate_db_auth_token('test-database.c1eo8ftt0y1z.us-east-1.rds.amazonaws.com',3306,'test')
 
+print token
+
 mydb = mysql.connector.connect(
     host = "test-database.c1eo8ftt0y1z.us-east-1.rds.amazonaws.com",
     user = 'test',
-    password = token,
-    ssl = 'ssl'
+    password = token
 )
 
 urls = ("/dynamic", "hello")
