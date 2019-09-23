@@ -12,7 +12,8 @@ mydb = mysql.connector.connect(
     host = "test-database.c1eo8ftt0y1z.us-east-1.rds.amazonaws.com",
     user = 'test',
     password = token,
-    ssl = 'ssl'
+    ssl_ca = 'rds-combined-ca-bundle.pem',
+    auth_plugin = 'mysql_clear_password'
 )
 
 urls = ("/dynamic", "hello")
