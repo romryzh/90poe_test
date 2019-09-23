@@ -18,17 +18,27 @@ mydb = mysql.connector.connect(
     user = 'ec2'
 )
 
+cursor = mydb.cursor()
+
 urls = ("/dynamic", "hello")
 app = web.application(urls, globals())
 
 class hello:
 	def GET(self):
-		return """<html>
+                index_query = ("SECLECT count FROM inexes")
+                cursor.execute(index_query)
+                index = cursor.count
+                new_index= inex + 1
+                add_index_query = ("INSERT INTO indexes (count) VALUES (%s)", new_index)
+                cursor.execute(add_index_query)
+                cursor.commit()
+		return("""<html>
 <header><title>Dynamic page</title></header>
 <body>
+Vists number: %s
 Hello World from dynamic page!
 </body>
-</html>"""
+</html>""", new_index)
 
 if __name__ == "__main__":
 	web.wsgi.runwsgi = lambda func, addr=None: web.wsgi.runfcgi(func, addr)
