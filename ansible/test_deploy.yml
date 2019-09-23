@@ -31,6 +31,7 @@
     with_items:
         - web.py
         - mysql-connector
+        - boto3
 
 - hosts: test
   become: yes
