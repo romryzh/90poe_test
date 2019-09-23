@@ -11,7 +11,8 @@ token = client.generate_db_auth_token('test-database.c1eo8ftt0y1z.us-east-1.rds.
 mydb = mysql.connector.connect(
     host = "test-database.c1eo8ftt0y1z.us-east-1.rds.amazonaws.com",
     user = 'test',
-    password = token
+    password = token,
+    ssl = 'ssl'
 )
 
 urls = ("/dynamic", "hello")
