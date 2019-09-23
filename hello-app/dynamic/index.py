@@ -9,8 +9,8 @@ client = boto3.client('rds',region_name='us-east-1')
 token = cliente.generate_db_auth_token('test-database.c1eo8ftt0y1z.us-east-1.rds.amazonaws.com',3306,'ec2-rds')
 
 mydb = mysql.connector.connect(
-    host = "test-database.c1eo8ftt0y1z.us-east-1.rds.amazonaws.com"
-    user = 'ec2-rds'
+    host = "test-database.c1eo8ftt0y1z.us-east-1.rds.amazonaws.com",
+    user = 'ec2-rds',
     password = token
 )
 
