@@ -14,7 +14,7 @@ mydb = mysql.connector.connect(
     host = "test-database.c1eo8ftt0y1z.us-east-1.rds.amazonaws.com",
     password = token,
     ssl_ca = 'rds-combined-ca-bundle.pem',
-    auth_plugin = 'mysql_clear_password',
+#    auth_plugin = 'mysql_clear_password',
     user = 'ec2'
 )
 
