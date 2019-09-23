@@ -9,4 +9,5 @@
 #   - A hostname/ip can be a member of multiple groups
 
 [test]
-host1 ansible_host=10.0.0.2 ansible_user=rry ansible_ssh_private_key_file=~/.ssh/ansible
+#vmvare_host ansible_host=10.0.0.2 ansible_user=rry ansible_ssh_private_key_file=~/.ssh/ansible
+aws_host ansible_host=184.72.85.74 ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/aws_n_virginia.pem

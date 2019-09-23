@@ -27,8 +27,10 @@
         - python-psycopg2
 
   - name: Install web.py
-    pip:
-      name: web.py
+    pip: name-{{item}}
+    with_items:
+        - web.py
+        - mysql-connector
 
 - hosts: test
   become: yes
