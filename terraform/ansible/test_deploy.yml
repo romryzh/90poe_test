@@ -1,0 +1,105 @@
+---
+- hosts: all
+  become: yes
+  gather_facts: no
+
+  vars:
+    dbname: testdb
+    dbuser: testuser
+    dbpassword: testsupersecretpassword
+    encrypted: yes
+
+  tasks:
+  - name: Check for Python
+    raw: test -e /usr/bin/python
+    changed_when: false
+    failed_when: false
+    register: check_python
+
+  - name: Install Python
+    raw: apt-get update && apt-get -y install python
+    when: check_python.rc != 0
+
+  - name: Ensure apt cache is up to date
+    apt: update_cache=yes
+  - name: Ensure packages are installed
+    apt: name={{item}}
+    with_items:
+        - postgresql
+        - nginx
+        - spawn-fcgi
+        - python-flup
+        - python-pip
+        - python-psycopg2
+
+  - name: Install web.py
+    pip: name={{item}}
+    with_items:
+        - web.py
+        - mysql-connector
+        - boto3
+
+  - name: Ensure database is created
+    become: yes
+    become_user: postgres
+    postgresql_db:
+      name: "{{dbname}}"
+
+  - name: Ensure user has access to database
+    become: yes
+    become_user: postgres
+    postgresql_user:
+      db: "{{dbname}}"
+      name: "{{dbuser}}"
+      password: "{{dbpassword}}"
+      encrypted: "{{encrypted}}"
+      priv: ALL
+
+  - name: Copy the nginx config file
+    copy:
+      src: files/test_site.cfg
+      dest: /etc/nginx/sites-available/test_site.cfg
+
+  - name: Create symlink
+    file:
+      src: /etc/nginx/sites-available/test_site.cfg
+      dest: /etc/nginx/sites-enabled/default
+      state: link
+
+  - name: Copy default html page
+    copy:
+      src: files/default_index.html
+      dest: /var/www/html/default_index.html
+
+  - name: Clone git repo
+    git:
+      repo: 'https://github.com/romryzh/90poe_test.git'
+      dest: /var/www/test
+      version: master
+      force: yes
+   
+  - name: Add exec permmisions to index.py
+    file:
+      path: /var/www/test/hello-app/dynamic/index.py
+      mode: 0755
+
+  - name: Copy and add exec permissions to fcgi init-script
+    copy:
+      src: files/fcgi
+      dest: /etc/init.d/fcgi
+      mode: 0755
+
+  - name: Add fcgi to autoboot
+    raw: 'update-rc.d fcgi defaults'
+
+  - name: Restart fcgi
+    service:
+      name: fcgi
+      state: restarted
+    become: yes
+
+  - name: Restart nginx
+    service:
+      name: nginx
+      state: restarted
+    become: yes
