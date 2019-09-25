@@ -24,12 +24,12 @@ variable "server_instance_type" {
 }
 
 variable "access_key" {
-        default         = "AKIAWEMSKNOGQIDC2BCP"
+        default         = ""
         description     = "IAM Access Key"
 }
 
 variable "secret_key" {
-        default         = "L9I3TUWx+VDSdvFLGOAOIgz/N0HT8BLoQdp2JSf6"
+        default         = ""
         description     = "IAM Secret Key"
 }
 
